@@ -21,6 +21,9 @@
     margin-bottom: 10px;
     
 }
+.mt10{
+    margin-top: 10px;
+}
 .m{
     margin-top: 10px;
     margin-left: 10px;
@@ -132,7 +135,7 @@
     border-right: 1px solid #CCC;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius:5px ;
-    min-height: 200px;
+    /* min-height: 200px; */
 }
 /* boxcontent2 */
 .boxcontent2{
@@ -140,7 +143,7 @@
     
     border-right: 1px solid #CCC;
    
-    min-height: 200px;
+    /* min-height: 200px; */
 }
 
 .boxfooter{
@@ -181,4 +184,85 @@
 }
 .from ul li a:hover{
     color:dodgerblue;
+}
+
+/* menu dọc chỗ mục lục */
+
+.menu2 li{
+    list-style: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #CCC;
+}
+.menu2 li a{
+    text-decoration: none;
+    color: #333;
+    padding-left: 20px;  
+}
+.menu2 li a:hover{
+    color: dodgerblue;
+}
+
+.boxfooter input{
+    width: 100%;
+    min-height: 30px;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+}
+.img{
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin-right: 10px;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+}
+.list a{
+    text-decoration: none;
+    color: #333;
+}
+.list a:hover{
+    color: dodgerblue;
+}
+.list{
+    /* border-left: 1px solid #CCC;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #CCC; */
+    margin-left: 10px;
+    min-height: 500px;
+    
+}
+
+/* Code Css phần Admin */
+.headeradmin{
+    background-color: orangered;
+    border: 1px greenyellow solid;
+    color: #fff;
+    border-radius: 5px;
+}
+.headeradmin h1{
+    font-size: 2vw;
+    margin: 10px 20px;
+}
+
+.banneradmin{
+    background-color: #CCC;
+    border: 1px greenyellow solid;
+    color: #fff;
+    border-radius: 5px;
+}
+.fromadmin input[type="text"]{
+    width: 100%;
+    min-height: 30px;
+}
+.fromadmin input[type="submit"]{
+    width: 100px;
+    min-height: 20px;
+    border-color: #CCC;
+
+}
+
+.fromadmin input[type="submit"]:hover{
+    border-color: #333;
+    cursor: pointer;
 }
