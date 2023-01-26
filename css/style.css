@@ -12,6 +12,13 @@
     float: left;
     width: 100%;
 }
+/* độ cao của box (Test) */
+.h{
+    height: 100px;
+}
+.h1{
+    height: 250px;
+}
 
 .mb{
     margin-bottom: 20px;
@@ -234,35 +241,106 @@
 }
 
 /* Code Css phần Admin */
-.headeradmin{
-    background-color: orangered;
-    border: 1px greenyellow solid;
-    color: #fff;
-    border-radius: 5px;
-}
-.headeradmin h1{
-    font-size: 2vw;
-    margin: 10px 20px;
-}
+    .headeradmin{
+        background-color: orangered;
+        border: 1px greenyellow solid;
+        color: #fff;
+        border-radius: 5px;
+    }
+    .headeradmin h1{
+        font-size: 2vw;
+        margin: 10px 20px;
+    }
 
-.banneradmin{
-    background-color: #CCC;
-    border: 1px greenyellow solid;
-    color: #fff;
-    border-radius: 5px;
-}
-.fromadmin input[type="text"]{
-    width: 100%;
-    min-height: 30px;
-}
-.fromadmin input[type="submit"]{
-    width: 100px;
-    min-height: 20px;
-    border-color: #CCC;
+    .banneradmin{
+        background-color: #CCC;
+        border: 1px greenyellow solid;
+        color: #fff;
+        border-radius: 5px;
+    }
+    .fromadmin input[type="text"]{
+        width: 100%;
+        min-height: 30px;
+    }
+    .fromadmin button{
+        width: 150px;
+        border-radius: 3px;
+        min-height: 20px;
+        border-color: #ccc;
+        background-color: #fff;
 
-}
+    }
 
-.fromadmin input[type="submit"]:hover{
-    border-color: #333;
-    cursor: pointer;
-}
+    .fromadmin button:hover{
+        background-color:#CCC ;
+        border-color: #333;
+        cursor: pointer;
+    }
+    .fromadmin button a{
+        text-decoration: none;
+        color: #333;
+    }
+
+    /* Code trang Danh sách loại hàng - Table */
+    .fromadmin table{
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        
+    }
+
+    .fromadmin table th:nth-child(1){
+        padding: 20px;
+        width: 10%;
+        background-color: #CCC;
+        border-left: 1px solid #CCC;
+    }
+
+    .fromadmin table th:nth-child(2){
+        width: 30%;
+        background-color: #CCC;
+    }
+
+    .fromadmin table th:nth-child(3){
+        width: 40%;
+        background-color: #CCC;
+    }
+
+    .fromadmin table th:nth-child(4){
+        width: 20%;
+        background-color: #CCC;
+    }
+
+    .fromadmin table td{
+        padding: 10px 20px;
+        border: 1px solid #ccc ;
+        background-color: #fff; 
+    }
+
+    .fromadmin table input[type="text"]{
+        width: 50px;
+        border-radius: 5px;
+        border-color:#CCC ;
+        
+        gap: 10px;
+    }
+
+    .fromadmin table input[type="text"]:hover{
+        background-color: aqua;
+        cursor: pointer;
+        
+    }
+
+    /* css phần content của trang thống kê */
+    .contentthongke{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .contentthongke .sanphamthongke{
+        width: 49%;
+    }
+    
+    /* Chứ ý 10%=20px */
