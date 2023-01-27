@@ -1,35 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách Loại Hàng</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <div class="boxcenter">
-        <!-- Phần Header -->
-        <div class="row mb  headeradmin">
-            <h1>Danh Sách Loại Hàng</h1>
-        </div> 
-        <!-- Phần Menu -->
-        <div class="row mb menu">
-            <ul>
-                <li><a href="admin.html">Trang Chủ</a></li>
-                <li><a href="#">Danh Mục</a></li>
-                <li><a href="#">Hàng Hóa</a></li>
-                <li><a href="#">Khách Hàng</a></li>
-                <li><a href="#">Bình Luận</a></li>
-                <li><a href="thongke.html">Thống Kê</a></li>
-            </ul>
-        </div>
-
-        <div class="row mb  banneradmin">
-            <h1>Thêm Hàng Hóa Mới</h1>
-        </div>
-
-        <div class="row mb10 fromadmin ">
+<div class="row mb10 fromadmin ">
 
                 <table>
                     <tr>
@@ -39,7 +8,23 @@
                         <th></th>
                     </tr>
 
-                    <tr>
+                    <?php
+
+                        foreach($listdanhmuc as $danhmuc){
+                            extract($danhmuc);
+                            // extract để ta lấy trực tiếp tên biến vào!    
+                             echo ' <tr>
+                                    <td><input type="checkbox" name="" id=""></td>
+                                    <td> '.$id.' </td>
+                                    <td> '.$name.' </td>
+                                    <td><a href=""><input type="button" value="Sửa"></a> <a href=""><input type="button" value="Xóa"></a></td>
+                                    </tr> 
+                                  ';
+                        }
+
+                    ?>
+
+                    <!-- <tr>
                         <td><input type="checkbox" name="" id=""></td>
                         <td>001</td>
                         <td>Đồng Hồ</td>
@@ -72,7 +57,7 @@
                         <td>005</td>
                         <td>Đồng Hồ</td>
                         <td><a href=""><input type="button" value="Sửa"></a> <a href=""><input type="button" value="Xóa"></a></td>
-                    </tr>
+                    </tr> -->
 
                     
                 </table>
@@ -90,7 +75,3 @@
         
 
         </div>
-
-    </div>    
-</body>
-</html>
