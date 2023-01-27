@@ -262,6 +262,7 @@
         width: 100%;
         min-height: 30px;
     }
+    
     .fromadmin input[type="submit"],
     .fromadmin input[type="reset"]{
         border-radius: 5px;
