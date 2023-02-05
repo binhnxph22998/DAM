@@ -63,10 +63,10 @@
         <div class="row mb menu">
             <ul>
                 <li><a href="index.php">Trang Chủ</a></li>
-                <li><a href="index.php?atc=adddm">Danh Mục</a></li>
-                <li><a href="index.php?atc=addsp">Hàng Hóa</a></li>
-                <li><a href="index.php?atc=dskh">Khách Hàng</a></li>
-                <li><a href="index.php?atc=dsbl">Bình Luận</a></li>
-                <li><a href="index.php?atc=thongke">Thống Kê</a></li>
+                <li><a href="index.php?act=adddm">Danh Mục</a></li>
+                <li><a href="index.php?act=addsp">Hàng Hóa</a></li>
+                <li><a href="index.php?act=dskh">Khách Hàng</a></li>
+                <li><a href="index.php?act=dsbl">Bình Luận</a></li>
+                <li><a href="index.php?act=thongke">Thống Kê</a></li>
             </ul>
         </div>

@@ -12,12 +12,14 @@
 
                         foreach($listdanhmuc as $danhmuc){
                             extract($danhmuc);
-                            // extract để ta lấy trực tiếp tên biến vào!    
+                            // extract để ta lấy trực tiếp tên biến vào!  
+                            $editdm="index.php?act=editdm&id=".$id;
+                            $xoadm="index.php?act=xoadm&id=".$id;  
                              echo ' <tr>
                                     <td><input type="checkbox" name="" id=""></td>
                                     <td> '.$id.' </td>
                                     <td> '.$name.' </td>
-                                    <td><a href=""><input type="button" value="Sửa"></a> <a href=""><input type="button" value="Xóa"></a></td>
+                                    <td> <a href=" '.$editdm.' "><input type="button" value="Sửa"></a> <a href=" '.$xoadm.' "><input type="button" value="Xóa"></a> </td>
                                     </tr> 
                                   ';
                         }
@@ -68,7 +70,7 @@
                         <input type="button" value="Chọn Tất Cả">
                         <input type="button" value="Bỏ Chọn Tất Cả">
                         <input type="button" value="Xóa Các Mục Chọn">
-                        <a href=""><input type="button" value="Nhập Thêm"></a>
+                        <a href="index.php?act=adddm"><input type="button" value="Nhập Thêm"></a>
                        
                 </div>
 

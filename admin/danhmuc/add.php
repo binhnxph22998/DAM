@@ -4,7 +4,7 @@
 
         <div class="row mb10">
 
-            <form action="index.php?atc=adddm" method="post" class="fromadmin">
+            <form action="index.php?act=adddm" method="post" class="fromadmin">
                 <!--  -->
                 <div class="row mb10 mt10">
                     Mã Loại <br> 
@@ -20,7 +20,7 @@
                         <input type="submit" name="submit" value="Thêm Mới">
                         <input type="reset" value="Nhập lại">
                         
-                        <a href="index.php?atc=listdm"><input type="button"  value="Danh Sách"></a>
+                        <a href="index.php?act=listdm"><input type="button"  value="Danh Sách"></a>
                         <!-- trong input cái type rất quan trọng!    -->
                 </div>
 

@@ -6,11 +6,11 @@
     // controler
 
     // kiểm tra xem act có tồn tại không
-    if(isset($_GET['atc'])){
+    if(isset($_GET['act'])){
         // nếu mà act có tồn tại nên cho biến mới bằng với giá trị mình so sánh
-        $atc=$_GET['atc'];
+        $act=$_GET['act'];
 
-        switch ($atc) {
+        switch ($act) {
             
             case 'adddm':
                 // kiểm tra người dùng có click vào nút add hay không 
@@ -31,10 +31,23 @@
                 break;
 
             case 'listdm':
-                $sql="select * from danhmuc order by name";
+                $sql="select * from danhmuc order by id desc";
                 $listdanhmuc=pdo_query($sql);
                 include "danhmuc/list.php";
             break;
+
+            case 'xoadm':
+                //kiểm tra xem id có tồn tại và thỏa mãn điều kiện id>0
+                if (isset($_GET['id'])&&($_GET['id']>0)) {
+                    $sql="delete from danhmuc where id=".$_GET['id'];
+                    pdo_execute($sql);
+                };
+                // sau khi xóa dữ liệu xong thì ta gọi lại danh sách = câu lệnh dưới
+                // "id decs" là để hiện danh sách cái nào mới nhập thì đưa lên trên!
+                $sql="select * from danhmuc order by id desc"; 
+                $listdanhmuc=pdo_query($sql);
+                include "danhmuc/list.php";
+                break;
             
             case 'addsp':
                 include "sanpham/addsp.php";
