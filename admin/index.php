@@ -1,7 +1,7 @@
 <?php 
 
     include "../model/pdo.php";
-
+    include "../model/modeldm.php";
     include "header.php";
     // controler
 
@@ -16,12 +16,9 @@
                 // kiểm tra người dùng có click vào nút add hay không 
                     if(isset($_POST['submit']) && ($_POST['submit'])){
                         // kiểm tra xem có đúng rằng nó tồn tại và người ta có click vào hay không
-                    $tenloai=$_POST['tenloai'];
+                        $tenloai=$_POST['tenloai'];
                         // thì ta insert tên loại lên database
-                    $sql="insert into danhmuc(name) values('$tenloai')";
-                    
-                    //hàm thực thi câu lệnh sql
-                    pdo_execute($sql);
+                        insert_danhmuc($tenloai);
 
                     $thongbao="thêm đã thành công";
 
@@ -29,18 +26,16 @@
 
                     include "danhmuc/add.php";
                 break;
-
+            // hiển thị list danh mục (load danh sách)       
             case 'listdm':
-                $sql="select * from danhmuc order by id desc";
-                $listdanhmuc=pdo_query($sql);
+                $listdanhmuc=loadall_danhmuc();
                 include "danhmuc/list.php";
             break;
 
-            case 'xoadm':
+            case 'deletedm':
                 //kiểm tra xem id có tồn tại và thỏa mãn điều kiện id>0
                 if (isset($_GET['id'])&&($_GET['id']>0)) {
-                    $sql="delete from danhmuc where id=".$_GET['id'];
-                    pdo_execute($sql);
+                    delete_danhmuc($_GET['id']);
                 };
                 // sau khi xóa dữ liệu xong thì ta gọi lại danh sách = câu lệnh dưới
                 // "id decs" là để hiện danh sách cái nào mới nhập thì đưa lên trên!
@@ -49,11 +44,35 @@
                 include "danhmuc/list.php";
                 break;
             
-            case 'addsp':
-                include "sanpham/addsp.php";
-            break;    
+            case 'editdm':
+                //kiểm tra xem id có tồn tại và thỏa mãn điều kiện id>0
+                if (isset($_GET['id'])&&($_GET['id']>0)) {
+                // phải lấy đúng biến truyền vào !
+                $dm=loadone_danhmuc($_GET['id']);
+                }
+                // show phần from update:
+                include "danhmuc/update.php";
+            break;
+            
+            case 'uploaddm':
+                // kiểm tra người dùng có click vào nút Cập Nhật hay không 
+                if(isset($_POST['upload']) && ($_POST['upload'])){
+                    // kiểm tra xem có đúng rằng nó tồn tại và người ta có click vào hay không
+                $tenloai=$_POST['tenloai'];
+                $id=$_POST['id'];
+                    // thì ta sửa tên loại lên database
+                    update_danhmuc($tenloai,$id);
+
+                $thongbao="thêm đã thành công";
+                }
+                
+                // "id decs" là để hiện danh sách cái nào mới nhập thì đưa lên trên!
+                $listdanhmuc=loadall_danhmuc();
+                include "danhmuc/list.php";
+                break;
             
             default:
+
                 include "home.php";
                 break;
         }

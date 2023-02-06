@@ -14,12 +14,12 @@
                             extract($danhmuc);
                             // extract để ta lấy trực tiếp tên biến vào!  
                             $editdm="index.php?act=editdm&id=".$id;
-                            $xoadm="index.php?act=xoadm&id=".$id;  
+                            $deletedm="index.php?act=deletedm&id=".$id;  
                              echo ' <tr>
                                     <td><input type="checkbox" name="" id=""></td>
                                     <td> '.$id.' </td>
                                     <td> '.$name.' </td>
-                                    <td> <a href=" '.$editdm.' "><input type="button" value="Sửa"></a> <a href=" '.$xoadm.' "><input type="button" value="Xóa"></a> </td>
+                                    <td> <a href=" '.$editdm.' "><input type="button" value="Sửa"></a> <a href=" '.$deletedm.' "><input type="button" value="Xóa"></a> </td>
                                     </tr> 
                                   ';
                         }
