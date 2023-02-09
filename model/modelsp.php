@@ -1,7 +1,7 @@
 <?php
     // hàm thêm danh mục 
-    function insert_sanpham($tenloai){
-                    $sql="insert into sanpham(name) values('$tenloai')";
+    function insert_sanpham($name,$price,$image,$detail,$view,$iddm){
+                    $sql="insert into sanpham(name,price,img,detail,view,iddm) values('$name','$price','$image','$detail','$view','$iddm')";
                     
                     //hàm thực thi câu lệnh sql
                     pdo_execute($sql);
@@ -25,7 +25,7 @@
                 $dm=pdo_query_one($sql);
                 // có kết quả trả về thì phải return nó ra!
                 return $dm;
-    }
+    }   
     // hàm sửa danh mục
     function update_sanpham($tenloai,$id){
         $sql="update sanpham set name='".$tenloai."' where id=".$id;

@@ -1,25 +1,47 @@
+<!-- do không thể chỉnh css trên file css -->
+<style>
+    .fromadmin input[type="button"]{
+        border-radius: 5px;
+        margin-top: 5px;
+        border-color:#CCC ;
+        background-color: #fff;
+    }
+</style>
+
 <div class="row mb10 fromadmin ">
 
                 <table>
                     <tr>
                         <th></th>
-                        <th>Mã Loại</th>
-                        <th>Tên Loại</th>
+                        <th>Mã Loại Sản phẩm</th>
+                        <th>Tên Loại Sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Ảnh</th>
+                        <th>Mô tả</th>
+                        <th>view</th>
+                        <th>idsm</th>
                         <th></th>
                     </tr>
+                    
 
                     <?php
 
-                        foreach($listdanhmuc as $danhmuc){
-                            extract($danhmuc);
-                            // extract để ta lấy trực tiếp tên biến vào!  
-                            $editdm="index.php?act=editdm&id=".$id;
-                            $deletedm="index.php?act=deletedm&id=".$id;  
+                        foreach($listsanpham as $sanpham){
+                            extract($sanpham);
+                            // extract để ta lấy trực tiếp tên biến vào! 
+                            // tạo biến hứng để chuyển dữ liệu qua file index.php 
+                            $editsp="index.php?act=editsp&id=".$id;
+                            $deletesp="index.php?act=deletesp&id=".$id;  
                              echo ' <tr>
                                     <td><input type="checkbox" name="" id=""></td>
                                     <td> '.$id.' </td>
                                     <td> '.$name.' </td>
-                                    <td> <a href=" '.$editdm.' "><input type="button" value="Sửa"></a> <a href=" '.$deletedm.' "><input type="button" value="Xóa"></a> </td>
+                                    <td> '.$price.' </td>
+                                    <td> '.$img.' </td>
+                                    <td> '.$detail.' </td>
+                                    <td> '.$view.' </td>
+                                    <td> '.$iddm.' </td>
+                                    <td> <a href=" '.$editsp.' "><input type="button" value="Sửa"></a> <a href=" '.$deletesp.' "><input type="button" value="Xóa"></a> </td>
                                     </tr> 
                                   ';
                         }
@@ -70,7 +92,7 @@
                         <input type="button" value="Chọn Tất Cả">
                         <input type="button" value="Bỏ Chọn Tất Cả">
                         <input type="button" value="Xóa Các Mục Chọn">
-                        <a href="index.php?act=adddm"><input type="button" value="Nhập Thêm"></a>
+                        <a href="index.php?act=addsp"><input type="button" value="Nhập Thêm"></a>
                        
                 </div>
 

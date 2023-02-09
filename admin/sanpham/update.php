@@ -26,6 +26,37 @@
                 </div>
 
                 <div class="row mb10 mt10">
+                    Mã Loại sản phẩm <br> 
+                     <input type="text" name="maloai" id="" disabled>
+                </div>
+
+                <div class="row mb10 mt10">
+                    Tên loại sản phẩm <br>
+                     <input type="text" placeholder="Tên Loại Hàng" name="tenloai" id="">
+                </div>
+
+                <div class="row mb10 mt10">
+                    Giá loại sản phẩm <br>
+                     <input type="text" placeholder="Giá Loại sản phẩm" name="giasp" id="">
+                </div>
+
+                <div class="row mb10 mt10">
+                    Hình ảnh sản phẩm <br>
+                     <input type="file"  name="image" id="">
+                </div>
+
+                <div class="row mb10 mt10">
+                    View sản phẩm <br>
+                     <input type="text" name="tenloai" id="">
+                </div>
+
+                <div class="row mb10 mt10">
+                    Mô tả loại sản phẩm <br>
+                    <textarea name="detail" id="" placeholder="Mô tả sản phẩm của khách hàng" cols="129" rows="10"></textarea>
+                    
+                </div>
+
+                <div class="row mb10 mt10">
                     <input type="hidden" name="id" value="<?php if(isset($id)&&($id!="")) echo $id ?>">
                         <input type="submit" name="upload" value="Cập Nhật">
                         <input type="reset" value="Nhập lại">
