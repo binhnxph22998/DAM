@@ -8,8 +8,35 @@
     }
 </style>
 
+<div class="mb10">
+    <!-- Thêm 1 cái form để tra sản phẩm -->
+    <form action="index.php?act=listsp" method="post">
+        <!-- action đến file index.php?act=listsp thực chất để tìm đến "case:listsp" để thực hiện hành động -->
+                        <input type="text" name="keyword">
+                        <select name="iddm" id="">
+                            <option value="0" selected >Tất Cả</option>
+                        <!-- cách hiện iddm khi mà nhập form thêm sản phẩm  -->
+                        <?php
+                            // để có biến listdanhmuc thì bắt buộc phải có trong case ở phần index !
+                            foreach($listdanhmuc as $danhmuc){
+                                // lấy list danh mục để show ra cái iddm!
+                                extract($danhmuc);
+                                
+                                echo '<option value="'.$id.'">'.$name.'</option>';
+                            }
+
+                        ?>
+                    </select>
+
+                     <input type="submit" name="timkiemok" value="Tìm Kiếm">       
+
+                    </form>
+</div>
+
+
 <div class="row mb10 fromadmin ">
 
+                
                 <table>
                     <tr>
                         <th></th>
@@ -31,13 +58,23 @@
                             // extract để ta lấy trực tiếp tên biến vào! 
                             // tạo biến hứng để chuyển dữ liệu qua file index.php 
                             $editsp="index.php?act=editsp&id=".$id;
-                            $deletesp="index.php?act=deletesp&id=".$id;  
+                            $deletesp="index.php?act=deletesp&id=".$id;
+                            // tạo biến để hứng link ảnh !
+                            $hinhpath="../upload/".$img;
+                            // kiểm tra xem có tồn tại file $hinhpath 
+                            if (is_file($hinhpath)) {
+                                // cách thêm hình vào trong bảo table trong trang danh sách sản phẩm!
+                                $hinh="<img src='".$hinhpath."' height='80'>";
+                            }else {
+                                $hinh="No Files Image";
+                            }
+                            // phải sủa trong echo là biến $hinh để có đường link ảnh hiển thị kết ảnh!
                              echo ' <tr>
                                     <td><input type="checkbox" name="" id=""></td>
                                     <td> '.$id.' </td>
                                     <td> '.$name.' </td>
                                     <td> '.$price.' </td>
-                                    <td> '.$img.' </td>
+                                    <td> '.$hinh.' </td>
                                     <td> '.$detail.' </td>
                                     <td> '.$view.' </td>
                                     <td> '.$iddm.' </td>

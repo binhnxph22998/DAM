@@ -102,13 +102,30 @@
 
                     }
                     // với phần add danh mục này có cái idddm là để phân định loại hàng hóa nên bắt buộc phải có và phải load được danh mục lên
-                    //  $listdanhmuc ở đây chính là biến để hứng cái funtion có giá trị trả về ở modeldm.php ! 
+                    //  $listdanhmuc ở đây chính là biến để hứng cái funtion có giá trị trả về ở modeldm.php !
+                    // hiển thị list danh mục (load danh sách) 
                     $listdanhmuc=loadall_danhmuc();
                     include "sanpham/add.php";
                 break;
-            // hiển thị list danh mục (load danh sách)       
+              
+
             case 'listsp':
-                $listsanpham=loadall_sanpham();
+                // kiểm tra xem người dùng có bấm vào nút tìm kiếm trong trang danh sách sản phẩm không !
+                if (isset($_POST['timkiemok'])&&($_POST['timkiemok'])) {
+                    // khởi tạo biến
+                    $kw=$_POST['keyword'];
+                    $iddm=$_POST['iddm'];
+                }
+                // nếu ngược lại ta xét giá trị cho $kw là rỗng và $iddm là bằng 0
+                else {
+                    $kw='';
+                    $iddm=0;
+                }
+                // chú ý phải tồn tại biến mới thực hiện câu lệnh
+                // hiển thị list danh mục 
+                $listdanhmuc=loadall_danhmuc();
+                // hiển thị list danh sách
+                $listsanpham=loadall_sanpham($kw,$iddm);
                 include "sanpham/list.php";
             break;
 

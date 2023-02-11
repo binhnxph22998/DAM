@@ -9,8 +9,9 @@
                 <div class="row mb10 mt10">
                     Danh Mục <br>
                     <select name="iddm" id="">
-                        <!-- cách hiện iddm khi mà nhập from thêm sản phẩm  -->
+                        <!-- cách hiện iddm khi mà nhập form thêm sản phẩm  -->
                         <?php
+                        // để có biến listdanhmuc thì bắt buộc phải có trong case ở phần index !
                             foreach($listdanhmuc as $danhmuc){
                                 extract($danhmuc);
                                 
