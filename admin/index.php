@@ -82,7 +82,7 @@
                         // kiểm tra xem có đúng rằng nó tồn tại và người ta có click vào hay không
                         //
                         
-                        $name=$_POST['namesp'];
+                        $namesp=$_POST['namesp'];
                         $price=$_POST['giasp'];
                         $detail=$_POST['detail'];
                         $view=$_POST['luotxem'];
@@ -96,7 +96,7 @@
                             
                         }
                         // thì ta insert tên loại lên database
-                        insert_sanpham($name,$price,$image,$detail,$view,$iddm);
+                        insert_sanpham($namesp,$price,$image,$detail,$view,$iddm);
 
                     $thongbao="thêm đã thành công";
 
@@ -130,7 +130,7 @@
             break;
 
             case 'deletesp':
-                //kiểm tra xem id có tồn tại và thỏa mãn điều kiện id>0
+                //kiểm tra xem id có tồn tại và có thỏa mãn điều kiện id>0
                 if (isset($_GET['id'])&&($_GET['id']>0)) {
                     delete_sanpham($_GET['id']);
                 };
@@ -138,6 +138,9 @@
                 // "id decs" là để hiện danh sách cái nào mới nhập thì đưa lên trên!
                 $sql="select * from danhmuc order by id desc"; 
                 $listsanpham=pdo_query($sql);
+
+                $listsanpham=loadall_sanpham("",0);
+
                 include "sanpham/list.php";
                 break;
             
@@ -145,26 +148,43 @@
                 //kiểm tra xem id có tồn tại và thỏa mãn điều kiện id>0
                 if (isset($_GET['id'])&&($_GET['id']>0)) {
                 // phải lấy đúng biến truyền vào !
-                $dm=loadone_sanpham($_GET['id']);
+                $sp=loadone_sanpham($_GET['id']);
                 }
+                
+                $listdanhmuc=loadall_danhmuc();
                 // show phần from update:
                 include "sanpham/update.php";
             break;
             
             case 'uploadsp':
-                // kiểm tra người dùng có click vào nút Cập Nhật hay không 
-                if(isset($_POST['upload']) && ($_POST['upload'])){
-                    // kiểm tra xem có đúng rằng nó tồn tại và người ta có click vào hay không
-                $tenloai=$_POST['tenloai'];
-                $id=$_POST['id'];
-                    // thì ta sửa tên loại lên database
-                    update_sanpham($tenloai,$id);
 
-                $thongbao="thêm đã thành công";
+                // kiểm tra xem có đúng rằng nó tồn tại và người ta có click vào hay không
+                if(isset($_POST['uploadsp']) && ($_POST['uploadsp'])){
+                    // id này là phần id ở chỗ hidden trong bảng form update trong update.php
+                    $id=$_POST['id'];
+                    $iddm=$_POST['iddm'];
+                    $namesp=$_POST['namesp'];
+                    $price=$_POST['giasp'];
+                    $detail=$_POST['detail'];
+                    $view=$_POST['luotxem'];
+                    $iddm=$_POST['iddm'];
+                    $image=$_FILES['image']['name'];
+                    $target_dir = "../upload/";
+                    $target_file = $target_dir . basename($_FILES["image"]["name"]);
+                    if (move_uploaded_file($_FILES["image"]["tmp_name"],$target_file)) {
+                        #code...
+                    }else {
+                        #code...
+                    };
+                    // thì ta sửa tên loại lên database
+                    update_sanpham($id,$namesp,$image,$price,$view,$detail,$iddm);
+
+                        $thongbao="thêm đã thành công";
                 }
                 
                 // "id decs" là để hiện danh sách cái nào mới nhập thì đưa lên trên!
-                $listsanpham=loadall_sanpham();
+                $listdanhmuc=loadall_danhmuc();
+                $listsanpham=loadall_sanpham("",0);
                 include "sanpham/list.php";
                 break;
                

@@ -10,10 +10,12 @@
                     Danh Mục <br>
                     <select name="iddm" id="">
                         <!-- cách hiện iddm khi mà nhập form thêm sản phẩm  -->
+                        
                         <?php
                         // để có biến listdanhmuc thì bắt buộc phải có trong case ở phần index !
                             foreach($listdanhmuc as $danhmuc){
                                 extract($danhmuc);
+                                
                                 
                                 echo '<option value="'.$id.'">'.$name.'</option>';
                             }

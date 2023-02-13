@@ -26,8 +26,8 @@
                 </div>
 
                 <div class="row mb10 mt10">
-                    <input type="hidden" name="id" value="<?php if(isset($id)&&($id!="")) echo $id ?>">
-                        <input type="submit" name="upload" value="Cập Nhật">
+                    <input type="text" name="id" value="<?php if(isset($id)&&($id!="")) echo $id ?>">
+                        <a href="index.php?act=listdm"><input type="submit" name="upload" value="Cập Nhật">
                         <input type="reset" value="Nhập lại">
                         
                         <a href="index.php?act=listdm"><input type="button"  value="Danh Sách"></a>

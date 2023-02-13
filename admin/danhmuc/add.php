@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="row mb10 mt10">
-                        <input type="submit" name="submit" value="Thêm Mới">
+                        <a href="index.php?act=listdm"><input type="submit" name="submit" value="Thêm Mới"></a>
                         <input type="reset" value="Nhập lại">
                         
                         <a href="index.php?act=listdm"><input type="button"  value="Danh Sách"></a>

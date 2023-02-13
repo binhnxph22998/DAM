@@ -12,7 +12,7 @@
     <!-- Thêm 1 cái form để tra sản phẩm -->
     <form action="index.php?act=listsp" method="post">
         <!-- action đến file index.php?act=listsp thực chất để tìm đến "case:listsp" để thực hiện hành động -->
-                        <input type="text" name="keyword">
+                        <input type="text" name="keyword" placeholder="Nhập Tên Sản Phẩm..." >
                         <select name="iddm" id="">
                             <option value="0" selected >Tất Cả</option>
                         <!-- cách hiện iddm khi mà nhập form thêm sản phẩm  -->
@@ -46,7 +46,7 @@
                         <th>Ảnh</th>
                         <th>Mô tả</th>
                         <th>view</th>
-                        <th>idsm</th>
+                        
                         <th></th>
                     </tr>
                     
@@ -64,20 +64,20 @@
                             // kiểm tra xem có tồn tại file $hinhpath 
                             if (is_file($hinhpath)) {
                                 // cách thêm hình vào trong bảo table trong trang danh sách sản phẩm!
-                                $hinh="<img src='".$hinhpath."' height='80'>";
+                                $image="<img src='".$hinhpath."' height='80'>";
                             }else {
-                                $hinh="No Files Image";
+                                $image="No Files Image";
                             }
                             // phải sủa trong echo là biến $hinh để có đường link ảnh hiển thị kết ảnh!
                              echo ' <tr>
                                     <td><input type="checkbox" name="" id=""></td>
                                     <td> '.$id.' </td>
-                                    <td> '.$name.' </td>
+                                    <td> '.$namesp.' </td>
                                     <td> '.$price.' </td>
-                                    <td> '.$hinh.' </td>
+                                    <td> '.$image.' </td>
                                     <td> '.$detail.' </td>
                                     <td> '.$view.' </td>
-                                    <td> '.$iddm.' </td>
+                                    
                                     <td> <a href=" '.$editsp.' "><input type="button" value="Sửa"></a> <a href=" '.$deletesp.' "><input type="button" value="Xóa"></a> </td>
                                     </tr> 
                                   ';

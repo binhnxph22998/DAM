@@ -1,9 +1,18 @@
 <?php
-    // kiểm tra danh mục có tồn tại hay không nếu tồn tại thì thực hiện còn không tồn tại thì thôi!
-    if(is_array($dm)){
-        extract($dm);
+    // kiểm tra Sản phẩm có tồn tại hay không nếu tồn tại thì thực hiện còn không tồn tại thì thôi!
+    if(is_array($sp)){
+        extract($sp);
     }
 
+    // tạo biến để hứng link ảnh !
+    $hinhpath="../upload/".$img;
+    // kiểm tra xem có tồn tại file $hinhpath 
+    if (is_file($hinhpath)) {
+        // cách thêm hình vào trong bảo table trong trang danh sách sản phẩm!
+        $image="<img src='".$hinhpath."' height='80'>";
+    }else {
+        $image="No Files Image";
+    }
 ?>
 
 <div class="row mb  banneradmin">
@@ -12,56 +21,76 @@
 
         <div class="row mb10">
 
-            <form action="index.php?act=uploaddm" method="post" class="fromadmin">
+        <form action="index.php?act=uploadsp" method="POST" class="fromadmin" enctype="multipart/form-data" >
                 <!--  -->
                 <div class="row mb10 mt10">
-                    Mã Loại <br> 
-                     <input type="text" name="maloai" id="" disabled>
-                </div>
+                    Danh Mục <br>
+                    <select name="iddm" id="">
+                        <!-- cách hiện iddm khi mà nhập form thêm sản phẩm  -->
+                        
+                        <?php
+                        // để có biến listdanhmuc thì bắt buộc phải có trong case ở phần index !
+                            foreach($listdanhmuc as $danhmuc){
+                                extract($danhmuc);
+                                //kiểm tra để hiển thị danh mục trong phần sửa đổi
+                                if ($iddm==$id) {
+                                    echo '<option value="'.$id.'" selected>'.$name.'</option>';
+                                }else {
+                                    echo '<option value="'.$id.'">'.$name.'</option>';
+                                }
+                                
+                                
+                            }
 
-                <div class="row mb10 mt10">
-                    Tên Loại <br>
-                     <!-- kiểm tra xem $name có tồn tại và khách rỗng để thực hiện câu lệnh echo xuất name ra from! -->
-                     <input type="text" value="<?php if(isset($name)&&($name!="")) echo $name ?>" name="tenloai" id=""> 
-                </div>
-
-                <div class="row mb10 mt10">
-                    Mã Loại sản phẩm <br> 
-                     <input type="text" name="maloai" id="" disabled>
+                        ?>
+                    </select>
                 </div>
 
                 <div class="row mb10 mt10">
                     Tên loại sản phẩm <br>
-                     <input type="text" placeholder="Tên Loại Hàng" name="tenloai" id="">
+                    <!-- tránh chú ý trùng tên cột của 2 bảng trong database: khi gọi sẽ bị lỗi hiển thị tên của bảng đầu tiên nếu có cùng tên cột -->
+                     <input type="text" name="namesp" value="<?=$namesp?>" id="">
                 </div>
 
                 <div class="row mb10 mt10">
                     Giá loại sản phẩm <br>
-                     <input type="text" placeholder="Giá Loại sản phẩm" name="giasp" id="">
+                     <input type="text"  name="giasp" value="<?=$price ?>" id="">
                 </div>
 
                 <div class="row mb10 mt10">
                     Hình ảnh sản phẩm <br>
+                    <!-- hiển thị hình ảnh sản phẩm để sửa đổi -->
+                    <?=$image?> <br>
                      <input type="file"  name="image" id="">
                 </div>
 
                 <div class="row mb10 mt10">
                     View sản phẩm <br>
-                     <input type="text" name="tenloai" id="">
+                     <input type="text" name="luotxem" value="<?=$view ?>" id="">
                 </div>
 
                 <div class="row mb10 mt10">
                     Mô tả loại sản phẩm <br>
-                    <textarea name="detail" id="" placeholder="Mô tả sản phẩm của khách hàng" cols="129" rows="10"></textarea>
+                    <textarea name="detail" id=""cols="129" rows="10"><?=$detail ?></textarea>
                     
                 </div>
 
                 <div class="row mb10 mt10">
-                    <input type="hidden" name="id" value="<?php if(isset($id)&&($id!="")) echo $id ?>">
-                        <input type="submit" name="upload" value="Cập Nhật">
+                            
+                            <?php
+                            if(is_array($sp)){
+                                extract($sp);
+                            }
+                            ?>
+                            <!-- khi không có cụm php trên thì $id ở đây tự hiểu là id của phần danh mục nó sẽ lấy id mới nhất và khi đó sẽ
+                            không thể thực hiện đươc lệnh update vì id bị sai. cũng giống như phần Name ở trên cũng bị trùng và máy tự hiểu sẽ lấy 
+                            giá trị trong cột name ở bảng danh mục  -->
+                        <input type="text" name="id" value="<?=$id?>"> 
+
+                        <input type="submit" name="uploadsp" value="Cập Nhật">
                         <input type="reset" value="Nhập lại">
                         
-                        <a href="index.php?act=listdm"><input type="button"  value="Danh Sách"></a>
+                        <a href="index.php?act=listsp"><input type="button"  value="Danh Sách"></a>
                         <!-- trong input cái type rất quan trọng!    -->
                 </div>
 
