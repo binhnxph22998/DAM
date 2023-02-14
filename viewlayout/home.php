@@ -11,7 +11,6 @@
                 <div class="row">
                     <div class="bannerimg">
 
-                        
                         <!-- Slideshow container -->
                         <div class="slideshow-container">
 
@@ -55,9 +54,6 @@
                         <span class="dot" onclick="currentSlide(3)"></span>
                         </div>
 
-
-
-                        <!-- <img src="../image/bannerlaptop.webp" alt=""> -->
                     </div>
                 </div>
 
