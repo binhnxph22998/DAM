@@ -1,38 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dự Án Mẫu</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    
-    <div class="boxcenter">
-        <!-- Phần Header -->
-        <div class="row mb  header">
-            <h1>Siêu Thị Trực Tuyến</h1>
-        </div> 
-        <!-- Phần Menu -->
-        <div class="row mb menu">
-            <ul>
-                <li><a href="#">Trang Chủ</a></li>
-                <li><a href="#">Giới Thiệu</a></li>
-                <li><a href="#">Liên Hệ</a></li>
-                <li><a href="#">Góp Ý</a></li>
-                <li><a href="#">Hồi Đáp</a></li>
-            </ul>
-        </div>
-        <!-- Phần content -->
-        <div class="row mb content ">
+
+
+
+<!-- Phần Home trang chủ có thể thay đổi -->
+
+<div class="row mb content ">
 
             <!--Phần box-left chứa sản phẩm   -->
             <div class="box-left">
 
                 <div class="row">
                     <div class="bannerimg">
-                        <img src="../image/bannerlaptop.webp" alt="">
+
+                        
+                        <!-- Slideshow container -->
+                        <div class="slideshow-container">
+
+                        <!-- Full-width images with number and caption text -->
+                        <div class="mySlides fade">
+                        
+                        <img src="../image/bannerlaptop.webp">
+                        
+                        </div>
+
+                        <div class="mySlides fade">
+                        
+                        <img src="../image/bannerdienthoai.webp" >
+                        
+                        </div>
+
+                        <div class="mySlides fade">
+                        
+                        <img src="../image/bannergalaxy.webp" >
+                        
+                        </div>
+
+                        <div class="mySlides fade">
+                        
+                        <img src="../image/banneripad.webp" >
+                        
+                        </div>
+
+                        
+
+                        <!-- Next and previous buttons -->
+                        <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
+                        </div>
+                        <br>
+
+                        <!-- The dots/circles -->
+                        <div style="text-align:center">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        </div>
+
+
+
+                        <!-- <img src="../image/bannerlaptop.webp" alt=""> -->
                     </div>
                 </div>
 
@@ -270,13 +295,3 @@
 
 
         </div>
-
-
-
-
-        <!-- Phần footer -->
-        <div class="row mb demo"></div>
-    </div>
-
-</body>
-</html>
