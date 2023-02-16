@@ -35,6 +35,32 @@
         // có kết quả trả về thì phải return nó ra!
         return $listdanhmuc;
     }
+
+    // hàm để thực hiện loadall sản phẩm lên trang chủ
+   
+    function loadall_sanpham_home(){
+        // câu lệnh sql để load 9 sản phẩm lên trang chủ home
+        $sql="select * from sanpham where 1 order by id desc limit 0,9";
+        $listdanhmuc=pdo_query($sql);
+        // có kết quả trả về thì phải return nó ra!
+        return $listdanhmuc;
+        // hàm có giá trị trả về
+    }
+
+    // hàm để thực hiện load danh sách top 10 sản phẩm được yêu thích nhất
+    function loadall_sanpham_top10(){
+        // câu lệnh sql để load 10 sản phẩm được yêu thích lên trang chủ home
+        $sql="select * from sanpham where 1 order by view desc limit 0,10";
+    
+        $listdanhmuc=pdo_query($sql);
+        // có kết quả trả về thì phải return nó ra!
+        return $listdanhmuc;
+        // hàm có giá trị trả về
+    }
+
+
+
+
     // hàm load chi tiết 1 danh mục
     function loadone_sanpham($id){
         $sql="select * from sanpham where id=".$id;

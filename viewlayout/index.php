@@ -1,4 +1,16 @@
 <?php
+    // kết nối với database MySQL
+    include "../model/pdo.php";
+    include "../model/modeldm.php";
+    include "../model/modelsp.php";
+    // tạo biến hứng hàm load sản phẩm trong file modelsp.php
+    $spnew=loadall_sanpham_home();
+    // tạo biến hứng hàm load danh mục trong file modeldm.php
+    $dsdm=loadall_danhmuc();
+    // tạo biến hứng hàm load sản phẩm top 10 trong file modelsp.php
+    $loadtop10=loadall_sanpham_top10();
+
+    include "../gobal.php";
     include "header.php";
     // kiểm tra xem giá trị act có tồn tại và khác rỗng không 
     if (isset($_GET['act'])&&($_GET['act']!="")) {

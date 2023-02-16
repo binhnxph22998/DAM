@@ -77,6 +77,26 @@
         height: 300px;
         border-radius: 10px;
     }
+
+    .col {
+    width: calc(30.66% - 0px);
+    border: 1px solid #999999;
+    border-top-left-radius:5px ;
+    border-top-right-radius:5px ;    
+    }
+
+    .thumb img{
+    width: 100%;
+    height: 250px;
+    transform: scale(100%);
+    transition: 1s;
+    }
+
+    .col:hover{
+    box-shadow: 4px 4px 4px 4px #ccc ;
+    border: 1px solid black;
+    
+    }
 </style>
     
     <div class="boxcenter">

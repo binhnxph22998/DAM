@@ -45,36 +45,53 @@
                         <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                         <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
                         </div>
-                        <br>
+                        
 
                         <!-- The dots/circles -->
-                        <div style="text-align:center">
+                        <!-- <div style="text-align:center">
                         <span class="dot" onclick="currentSlide(1)"></span>
                         <span class="dot" onclick="currentSlide(2)"></span>
                         <span class="dot" onclick="currentSlide(3)"></span>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
 
                 <div class="row display w">
 
-                    <div class="col">
-                    <a href="#">
+                    
+                         <?php
+                            include_once '../model/db.php';
+                        
+                                $sql_pro="select * from sanpham";
+                                $objPro=$conn->query($sql_pro);
+                                foreach($objPro as $rows){
+                                ?>
+                                
+                          
+
+                         <div class="col">
+                        <a href="#">
                         <div class="thumb">
-                            <img src="../image/dongho.webp" alt="">
-                            <p>Giá: $19.00</p>
-                            <p>Tên: Đồng Hồ</p>
+                            <img src="../upload/<?php echo $rows['img'] ?>"  alt="">
+                            <p>Giá: $<?php echo $rows['price'] ?></p>
+                            <p>Tên: <?php echo $rows['namesp'] ?></p>
                         </div>
                         
                         
                         <div class="sanphamcontent">
                             <p>Mua Ngay</p>
                         </div>
-                    </a>
-                    </div>
+                        </a>
+                        </div>
+                         
+                        <?php
+                             }
+                             ?>
+                        
+                        
 
-                    <div class="col">
+                    <!--<div class="col">
                         <a href="#">
                             <div class="thumb">
                                 <img src="../image/dongho.webp" alt="">
@@ -117,37 +134,8 @@
                                         <p>Mua Ngay</p>
                                     </div>
                                 </a>
-                                </div>
+                                </div> -->
 
-                    <!-- <a href="#" class="boxsanpham">
-                        <img src="../image/dongho.webp" alt="">
-                        <p>$19.00</p>
-                        <p>Đồng Hồ</p>
-                    </a> -->
-
-                    <!-- <a href="#" class="boxsanpham">
-                        <img src="../image/dongho.webp" alt="">
-                        <p>$19.00</p>
-                        <p>Đồng Hồ</p>
-                    </a>
-
-                    <a href="#" class="boxsanpham">
-                        <img src="../image/dongho.webp" alt="">
-                        <p>$19.00</p>
-                        <p>Đồng Hồ</p>
-                    </a>
-
-                    <a href="#" class="boxsanpham">
-                        <img src="../image/dongho.webp" alt="">
-                        <p>$19.00</p>
-                        <p>Đồng Hồ</p>
-                    </a>
-
-                    <a href="#" class="boxsanpham">
-                        <img src="../image/dongho.webp" alt="">
-                        <p>$19.00</p>
-                        <p>Đồng Hồ</p>
-                    </a> -->
 
                     
 
@@ -202,7 +190,17 @@
 
                     <div class="boxcontent2 menu2">
 
-                        <li><a href="#">Đồng Hồ Đeo tay</a></li>
+                    <?php
+                        foreach ($dsdm as $dm) {
+                            extract($dm);
+                            // tạo 1 biến hứng link để khi bấm vào có thế load trang dữ liệu 
+                            $linkdm="index.php?act=sanpham&iddm=".$id;
+                            // linkdm này phục vụ cho sau dể khi bấm vào danh mục sẽ load hết các sản phẩm của danh mục đó!
+                            echo '<li><a href="'.$linkdm.'">'.$name.'</a></li>';
+                        }
+                    ?>
+
+                        <!-- <li><a href="#">Đồng Hồ Đeo tay</a></li>
                         <li><a href="#">Máy Tính Xách tay 2</a></li>
                         <li><a href="#">Máy Ảnh</a></li>
                         <li><a href="#">Điện Thoại</a></li>
@@ -211,7 +209,7 @@
                         <li><a href="#">Nón Thời Trang</a></li>
                         <li><a href="#">Túi Xách Du Lịch</a></li>
                         <li><a href="#">New Catalog</a></li>
-                        <li><a href="#">Apple 2023</a></li>
+                        <li><a href="#">Apple 2023</a></li> -->
 
                     </div>
                     
@@ -229,9 +227,24 @@
 
                     <div class="boxcontent">
 
-                        <div class="list">  
+                        <div class="list">
+                            
+                        <?php
+                            // lấy danh sách danh mục chuyền từ database ra 
+                        foreach ($loadtop10 as $sp) {
+                            extract($sp);
+                            $linksp="index.php?act=sanpham&idsp=".$id;
+                            // $image=$img_path.$img;
 
-                        <div class="row mb10 m">
+                            echo '  <div class="row mb10 m">
+                                    <img class="img" src="../upload/'.$img.'" alt="">
+                                    <a href="'.$linksp.'">'.$namesp.'</a>
+                                    </div>';
+                        }
+
+                        ?>
+
+                        <!-- <div class="row mb10 m">
                             <img class="img" src="../image/dongho.webp" alt="">
                             <a href="#">Đồng Hồ</a>
                         </div>
@@ -279,7 +292,7 @@
                         <div class="row mb10 m">
                             <img class="img" src="../image/dongho.webp" alt="">
                             <a href="#">Đồng Hồ</a>
-                        </div>
+                        </div> -->
 
                         </div> 
                     </div>    
@@ -290,4 +303,4 @@
             </div>
 
 
-        </div>
+</div>
