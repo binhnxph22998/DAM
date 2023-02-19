@@ -18,6 +18,9 @@
         $act=$_GET['act'];
         // switch-case với biến là $act là để thực hiện các chức năng cũng như là chuyển trang trong phần content(home) của trang web
         switch ($act) {
+            case 'sanphamct':
+                include "chitietsp.php";
+                break;
             case 'gioithieu':
                 include "gioithieu.php";
                 break;
