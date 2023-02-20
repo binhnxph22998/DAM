@@ -293,7 +293,16 @@
     color: #333;
     padding: 10px;
 }
-
+/* thêm phần css cho trang chi tiết sản phẩm */
+.boxcontentct{
+    border-left: 1px solid #CCC;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #CCC;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius:5px ;
+    height: auto;
+}
+/*  */
 .boxcontent{
     border-left: 1px solid #CCC;
     border-bottom: 1px solid #ccc;

@@ -69,9 +69,10 @@
                                 ?>
                                 
                           
-
+                                    
                          <div class="col">
-                        <a href="#">
+                            
+                        <a href="index.php?act=sanphamct">
                         <div class="thumb">
                             <img src="../upload/<?php echo $rows['img'] ?>"  alt="">
                             <p>Giá: $<?php echo $rows['price'] ?></p>
@@ -84,10 +85,8 @@
                         </div>
                         </a>
                         </div>
-                         
-                        <?php
-                             }
-                             ?>
+                    
+                        
                         
                         
 

@@ -97,6 +97,21 @@
     border: 1px solid black;
     
     }
+    /* css phần box sản phẩm chi tiết */
+    .boxcontentct{
+    border-left: 1px solid #CCC;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #CCC;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius:5px ;
+    height: auto;
+    }
+    .imgct{
+        
+        width: 65%;
+        padding-left: 300px;
+        
+    }
 </style>
     
     <div class="boxcenter">
