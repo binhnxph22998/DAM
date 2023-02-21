@@ -31,9 +31,9 @@
         // Nối chuỗi câu lệnh SQL với nhau chú ý là phải có dấu cách ở cuối đoạn cấu lệnh SQL1 
         // hoặc đầu câu lệnh SQL2 không sẽ hiện lối sai cú pháp
         $sql.=" order by id desc";
-        $listdanhmuc=pdo_query($sql);
+        $listsanpham=pdo_query($sql);
         // có kết quả trả về thì phải return nó ra!
-        return $listdanhmuc;
+        return $listsanpham;
     }
 
     // hàm để thực hiện loadall sản phẩm lên trang chủ
@@ -41,9 +41,9 @@
     function loadall_sanpham_home(){
         // câu lệnh sql để load 9 sản phẩm lên trang chủ home
         $sql="select * from sanpham where 1 order by id desc limit 0,9";
-        $listdanhmuc=pdo_query($sql);
+        $listsanpham=pdo_query($sql);
         // có kết quả trả về thì phải return nó ra!
-        return $listdanhmuc;
+        return $listsanpham;
         // hàm có giá trị trả về
     }
 
@@ -52,16 +52,31 @@
         // câu lệnh sql để load 10 sản phẩm được yêu thích lên trang chủ home
         $sql="select * from sanpham where 1 order by view desc limit 0,10";
     
-        $listdanhmuc=pdo_query($sql);
+        $listsanpham=pdo_query($sql);
         // có kết quả trả về thì phải return nó ra!
-        return $listdanhmuc;
+        return $listsanpham;
         // hàm có giá trị trả về
     }
 
+     // hàm load tên chi tiết 1 danh mục
+     function load_tendmsanpham($iddm){
+        // nếu iddm >0 thì thực hiện hiển thị danh mục
+        if ($iddm>0) {
+            $sql="select * from danhmuc where id=".$iddm;
+                // hàm lấy chi tiết của 1 danh mục nào đó và đây là hàm có giá trị trả về nên phải có 1 biến để hứng nó!
+                $dm=pdo_query_one($sql);
+                extract($dm);
+                // có kết quả trả về thì phải return tên danh mục đó  ra!
+                return $name;    
+        }else{
+            // còn iddm <0 thì hiển thị kết quả trả về ra rỗng
+            return "";
+        }
+        
+    } 
 
 
-
-    // hàm load chi tiết 1 danh mục
+    // hàm load chi tiết 1 sản phẩm
     function loadone_sanpham($id){
         $sql="select * from sanpham where id=".$id;
                 // hàm lấy chi tiết của 1 danh mục nào đó và đây là hàm có giá trị trả về nên phải có 1 biến để hứng nó!
@@ -69,7 +84,20 @@
                 // có kết quả trả về thì phải return nó ra!
                 return $sp;
     }   
-    // hàm sửa danh mục
+
+    // hàm load các sản phẩm cùng loại
+    function load_sanpham_cungloai($id,$iddm){
+        // để ra sản phẩm cùng loại thì cần sửa câu lệnh SQL từ "=" sang "<>"
+        // khi đó sẽ khác id với sản phẩm ở trang chi tiết => sẽ cho ra sản phẩm cùng danh mục và khác id
+        $sql="select * from sanpham where iddm=".$iddm." AND id <> ".$id;
+        // sau đó sẽ load tất cả các sản phẩm cùng loại
+        $listsanpham=pdo_query($sql);
+        // có kết quả trả về thì phải return nó ra!
+        return $listsanpham;
+        // hàm có giá trị trả về
+    }
+
+    // hàm sửa sản phẩm
     function update_sanpham($id,$namesp,$image,$price,$view,$detail,$iddm){
 
         // kiểm tra hình ảnh 

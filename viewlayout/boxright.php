@@ -45,8 +45,9 @@
                     <?php
                         foreach ($dsdm as $dm) {
                             extract($dm);
-                            // tạo 1 biến hứng link để khi bấm vào có thế load trang dữ liệu 
-                            $linkdm="index.php?act=sanphamct&iddm=".$id;
+                            // tạo 1 biến hứng link để khi bấm vào có thế load trang dữ liệu
+                            // chú ý cái act để đưa đường chuyền vào đúng case chức năng trong index 
+                            $linkdm="index.php?act=sanphamdm&iddm=".$id;
                             // linkdm này phục vụ cho sau dể khi bấm vào danh mục sẽ load hết các sản phẩm của danh mục đó!
                             echo '<li><a href="'.$linkdm.'">'.$name.'</a></li>';
                         }
@@ -66,8 +67,11 @@
                     </div>
                     
                     <div class="boxfooter">
-                        <form action="" method="post">
-                            <input type="search" placeholder="Từ Khóa Tìm Kiếm">
+                        <!-- act là phải chuyển về trang index.php để thực hiện chức năng có trong case "sanphamdm" -->
+                        <form action="index.php?act=sanphamdm" method="post" class="formsearch">
+                            <input type="search" name="kw" placeholder="Từ Khóa Tìm Kiếm">
+                            
+                            <input type="submit" name="timkiem" value="Tìm Kiếm">
                         </form>
                     </div>
 
@@ -83,7 +87,7 @@
                             
                         <?php
                             // lấy danh sách danh mục chuyền từ database ra 
-                            
+                            // foreach cái biến $loadtop10 này ở trong file index.php đã khai báo nên sẽ không báo lỗi cú pháp
                         foreach ($loadtop10 as $sp) {
                             extract($sp);
                             $linksp="index.php?act=sanphamct&idsp=".$id;

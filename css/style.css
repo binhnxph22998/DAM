@@ -28,6 +28,9 @@
     margin-bottom: 10px;
     
 }
+.ml10{
+    margin-left: 10px;
+}
 .mt10{
     margin-top: 10px;
 }
@@ -209,6 +212,15 @@
     
 }
 
+/* display của trang load sản phẩm theo danh mục */
+.display2{
+    display: flex;
+    flex-wrap: wrap;
+    gap:28px;
+ 
+    
+}
+
 /* thừa ! */
 .boxsanpham{
     border: 1px solid #CCC;
@@ -358,6 +370,15 @@
 }
 .from ul li a:hover{
     color:dodgerblue;
+}
+
+/* code  css form search tìm kiếm sản phẩm */
+.formsearch input[type="search"]{
+    margin-bottom:10px;
+}
+
+.formsearch input[type="submit"]:hover{
+    cursor: pointer;
 }
 
 /* menu dọc chỗ mục lục */

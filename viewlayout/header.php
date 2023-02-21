@@ -112,6 +112,25 @@
         padding-left: 300px;
         
     }
+    .mb10{
+        margin-bottom:10px
+    }
+    .ml5{
+    margin-left: 5px;
+    }
+
+    .display2{
+    display: flex;
+    flex-wrap: wrap;
+    gap:20px;
+    }
+    /* code them css form search */
+    .formsearch input[type="search"]{
+        margin-bottom:10px;
+    }
+    .formsearch input[type="submit"]:hover{
+    cursor: pointer;
+    }
 </style>
     
     <div class="boxcenter">

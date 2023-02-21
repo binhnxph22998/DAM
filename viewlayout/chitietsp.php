@@ -44,8 +44,19 @@
                 <div class="boxtitle">
                 <h1>Sản Phẩm Cùng Loại</h1>
                 </div>
-
-                <div class="row boxcontent mb10 h1"></div>
+                
+                <div class="row boxcontent mb10 h1">
+                    <?php 
+                        // foreach lấy giá trị biến $spcl trong file index.php
+                        foreach ($spcl as $spcl) {
+                            extract($spcl);
+                            // khai báo biên hứng link 
+                            $linksp="index.php?act=sanphamct&idsp=".$id;
+                            // khi gán link này vòa thẻ a để có thể truy cập vào trang chi tiết sản phẩm của sản phẩm cùng loại đó
+                            echo '<li><a href="'.$linksp.'">'.$namesp.'</a></li>';
+                        }
+                    ?>
+                </div>
             </div>
                 
             </div>

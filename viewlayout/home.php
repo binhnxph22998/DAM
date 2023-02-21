@@ -62,17 +62,20 @@
                     
                          <?php
                             include_once '../model/db.php';
-                        
-                                $sql_pro="select * from sanpham";
+                                // câu lệnh SQL sửa chỉ để hiển thị 9 sản phẩm mới nhất trên trang chủ
+                                $sql_pro="select * from sanpham where 1 order by id desc limit 0,9";
                                 $objPro=$conn->query($sql_pro);
                                 foreach($objPro as $rows){
+                                    extract($rows);
+                                    // tạo 1 biến hứng link để khi mà khách hàng truy cập vào để đi tới trang chi tiết sản phẩm
+                                    $linksp="index.php?act=sanphamct&idsp=".$id;
                                 ?>
                                 
                           
                                     
                          <div class="col">
                             
-                        <a href="index.php?act=sanphamct">
+                        <a href="<?php echo $linksp?>">
                         <div class="thumb">
                             <img src="../upload/<?php echo $rows['img'] ?>"  alt="">
                             <p>Giá: $<?php echo $rows['price'] ?></p>
@@ -86,7 +89,9 @@
                         </a>
                         </div>
                     
-                        
+                        <?php
+                                }
+                        ?>
                         
                         
 
