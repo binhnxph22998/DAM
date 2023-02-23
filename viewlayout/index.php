@@ -1,8 +1,10 @@
 <?php
+    session_start();
     // kết nối với database MySQL
     include "../model/pdo.php";
     include "../model/modeldm.php";
     include "../model/modelsp.php";
+    include "../model/modeltk.php";
     // tạo biến hứng hàm load sản phẩm trong file modelsp.php
     $spnew=loadall_sanpham_home();
     // tạo biến hứng hàm load danh mục trong file modeldm.php
@@ -61,9 +63,88 @@
             
                     break;    
 
-            case 'gioithieu':
-                include "gioithieu.php";
+            case 'dangki':
+                // kiểm tra xem người dùng có bấm vào nút đăng kí hay không
+                if(isset($_POST['dangki'])&&($_POST['dangki'])){
+                    // khởi tạo biến
+                    $email=$_POST['email'];
+                    $user=$_POST['user'];
+                    $pass=$_POST['pass'];
+                    // hàm thực hiện chức năng insert
+                    insert_taikhoan($email,$user,$pass);
+                    $thongbao="Bạn đã đăng kí tài khoản thành công.Vui lòng đăng nhập để thực hiện các chức năng!";
+                }
+                include "dangki.php";
                 break;
+            
+                case 'dangnhap':
+                    // kiểm tra xem người dùng có bấm vào nút đăng kí hay không
+                    if(isset($_POST['dangnhap'])&&($_POST['dangnhap'])){
+                        // khởi tạo biến
+                        $user=$_POST['user'];
+                        $pass=$_POST['pass'];
+                        // hàm thực hiện chức năng insert
+                        $check_user=check_user($user,$pass);
+                        // kiểm tra xem biến $check_user có phải là 1 cái mảng không
+                        if (is_array($check_user)) {
+                            $_SESSION['user']=$check_user;
+                            // chuyển trang khi đăng nhập thành công
+                          
+                            
+                        }else{
+                            $thongbao="Tài khoản đăng nhập không tồn tại vui lòng kiểm tra lại thông tin!";
+                        }
+                        
+                    };
+
+                    include "home.php";
+                    
+                    break;
+
+                case 'edit_tk':
+                        // kiểm tra xem người dùng có bấm vào nút đăng kí hay không
+                        if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
+                            // khởi tạo biến
+                            $email=$_POST['email'];
+                            $user=$_POST['user'];
+                            $pass=$_POST['pass'];
+                            $address=$_POST['address'];
+                            $tel=$_POST['tel'];
+                            $id=$_POST['id'];
+                            // hàm thực hiện chức năng insert
+                            update_tk($id,$user,$pass,$email,$address,$tel);
+                            $thongbao="Bạn đã cập nhật tài khoản thành công.Vui lòng đăng nhập để thực hiện các chức năng!";
+                           
+                        }
+                        include "edit_tk.php";
+                    break;
+                    
+                    case 'quenmk':
+                        //kiểm tra xem người dùng có bấm vào nút đăng kí hay không
+                        if(isset($_POST['gui'])&&($_POST['gui'])){
+                            // khởi tạo biến
+                            $email=$_POST['email'];
+                            $user=$_POST['user'];
+                           
+                            // hàm thực hiện chức năng insert
+                            $check_ue=check_mk($user,$email);
+                            if (is_array($check_ue)) {
+                                $thongbao="Mật khẩu của bạn là: ".$check_ue['pass'];
+                            }else {
+                                $thongbao="vui lòng nhập lại Email và User";
+                            }
+                           
+                        }
+                        include "quenmk.php";
+                    break; 
+                
+                    case 'out':
+                        session_unset();
+                        include "home.php";
+                    break;        
+            case 'gioithieu':
+                    include "gioithieu.php";
+                break;    
             case 'lienhe':
                 include "lienhe.php";
                 break;

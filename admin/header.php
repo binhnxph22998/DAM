@@ -53,6 +53,13 @@
         background-color: aqua;
         cursor: pointer;
     }
+    .fromadmin input[type="text"],
+    .fromadmin input[type="email"],
+    .fromadmin input[type="password"]
+    {
+        width: 100%;
+        min-height: 30px;
+    }
     </style>
     <div class="boxcenter">
         <!-- Phần Header -->

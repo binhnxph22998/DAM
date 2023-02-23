@@ -85,7 +85,7 @@
                             <!-- khi không có cụm php trên thì $id ở đây tự hiểu là id của phần danh mục nó sẽ lấy id mới nhất và khi đó sẽ
                             không thể thực hiện đươc lệnh update vì id bị sai. cũng giống như phần Name ở trên cũng bị trùng và máy tự hiểu sẽ lấy 
                             giá trị trong cột name ở bảng danh mục  -->
-                        <input type="text" name="id" value="<?=$id?>"> 
+                        <input type="hidden" name="id" value="<?=$id?>"> 
 
                         <input type="submit" name="uploadsp" value="Cập Nhật">
                         <input type="reset" value="Nhập lại">

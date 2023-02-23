@@ -131,6 +131,37 @@
     .formsearch input[type="submit"]:hover{
     cursor: pointer;
     }
+
+     /* css form đăng kí tài khoản */
+    .fromtk{
+    line-height: 150%;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 10px;  
+    }
+    .fromtk input[type="text"],
+    .fromtk input[type="email"],
+    .fromtk input[type="password"]{
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+    }
+
+    .fromtk input[type="submit"]{
+        border-radius: 5px;
+        padding: 5px 10px;
+        background-color: white;
+        border: 1px solid #eee;
+        cursor: pointer;
+        
+    }
+    .fromtk input[type="submit"]:hover{
+    background-color: #CCC;
+    }
+    .thongbao{
+        color:red;
+    }       
 </style>
     
     <div class="boxcenter">

@@ -1,1 +1,1 @@
-<!-- phần này chính là phần content nếu để ở thẻ html -->
+<a href="../viewlayout/index.php">Quay về trang chủ</a>

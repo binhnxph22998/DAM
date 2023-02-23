@@ -1,17 +1,17 @@
 <?php
-    // hàm thêm danh mục 
+    // hàm thêm sản phẩm
     function insert_sanpham($namesp,$price,$image,$detail,$view,$iddm){
                     $sql="insert into sanpham(namesp,price,img,detail,view,iddm) values('$namesp','$price','$image','$detail','$view','$iddm')";
                     
                     //hàm thực thi câu lệnh sql
                     pdo_execute($sql);
     }
-    // hàm xóa danh mục
+    // hàm xóa sản phẩm
     function delete_sanpham($id){
         $sql="delete from sanpham where id=".$id;
                     pdo_execute($sql);
     }
-    // hàm load tất cả các danh mục
+    // hàm load tất cả các sản phẩm
     function loadall_sanpham($kw="",$iddm=0){
         // chia câu SQL ra thành từng phần câu mặc định đầu luôn luôn tới bảng trong CSDL SQL
         // where 1 để so sánh 2 giữa 2 biến $kw và $iddm với nhau

@@ -3,8 +3,57 @@
 
                     <div class="boxtitle"> TÀI KHOẢN</div>
                     <div class="boxcontent ">
+                        <?php
+                            // kiểm tra xem nếu có tồn tại $_SESSION['user'] thì hiển thị ra tên user
+                            if (isset($_SESSION['user'])) {
+                                extract($_SESSION['user']);
+                                     
+                                
+
+                        ?>
+                            <div class="ml10">
+                            <br>    
+                            Xin chào <?=$user?>
+                                
+                            </div>
+
+                            <div class="from">
+                            <ul>
+                                <li>
+                                    <a href="index.php?act=quenmk">Quên Mật Khẩu</a>
+                                </li>
+
+                                <li>
+                                    <a href="index.php?act=edit_tk">Cập nhật thông tin tài khoản</a>
+                                </li>
+
+                                <?php 
+                                if (isset($_SESSION['user'])) {
+                                    extract($_SESSION['user']);
+                                // kiểm tra để phân chia nếu tài khoản thuộc quyền quản lý admin hay chỉ là 1 tài khoản bình thường
+                                if ($role==1) {
+                            
+                                 ?>   
+                                
+                                <li>
+                                    <a href="../admin/index.php">Đăng nhập admin</a>
+                                </li>
+                                <?php
+                                }
+                                }
+                                ?>
+                                <li>
+                                    <a href="index.php?act=out">Thoát</a>
+                                </li>
+
+                                </ul>
+                                </div>
+                        <?php 
+                            }else {
+    
+                        ?>
                         <!-- from đăng nhập tài khoản vào trang quản trị -->
-                        <form action="#" method="post" class="from ">
+                        <form action="index.php?act=dangnhap" method="post" class="from ">
 
                             <div class="row mb10 m">
                                 Tên Đăng Nhập <br>
@@ -20,19 +69,21 @@
                                 <input type="checkbox" name="" id="">Ghi Nhớ Tài Khoản?
                             </div>
 
-                            <input type="submit" class="m" value="Đăng Nhập">
+                            <input type="submit" class="m" name="dangnhap" value="Đăng Nhập">
                             
                             <ul class="">
                                 <li>
-                                    <a href="#">Quên Mật Khẩu</a>
+                                    <a href="index.php?act=quenmk">Quên Mật Khẩu</a>
                                 </li>
         
                                 <li>
-                                    <a href="#">Đăng kí Thành Viên Mới</a>
+                                    <a href="index.php?act=dangki">Đăng kí Thành Viên Mới</a>
                                 </li>
                                 </ul>
                         </form>
-
+                         
+                        <?php 
+                        }?>
                         
                     </div>
                 </div>

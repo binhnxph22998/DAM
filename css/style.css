@@ -372,6 +372,34 @@
     color:dodgerblue;
 }
 
+/* css form đăng kí tài khoản */
+.fromtk{
+    line-height: 150%;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.fromtk input[type="text"],
+.fromtk input[type="email"],
+.fromtk input[type="password"]{
+    width: 90%;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.fromtk input[type="submit"]{
+        border-radius: 5px;
+        padding: 5px 10px;
+        background-color: white;
+        border: 1px solid #eee;
+        cursor: pointer;
+        
+}
+.fromtk input[type="submit"]:hover{
+    background-color: #CCC;
+}
+
 /* code  css form search tìm kiếm sản phẩm */
 .formsearch input[type="search"]{
     margin-bottom:10px;
@@ -498,7 +526,8 @@
         border-left: 1px solid #CCC;
     }
 
-    /* sau khi hoàn thành trang add min cho danh mục thì làm tương tự cho trang sản phẩm và ở đây xóa bỏ hết 3css fromadmin table th:.. chỉ dữ lại 
+    /* sau khi hoàn thành trang add min cho danh mục thì làm tương tự cho trang sản phẩm và ở đây xóa bỏ hết 3css 
+    fromadmin table th:.. chỉ dữ lại 
     1 css và xóa bỏ chỉ để còn th khi đó nó sẽ tự động chia theo hàng ! */
     
     /* .fromadmin table th:nth-child(2){

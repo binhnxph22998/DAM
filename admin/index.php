@@ -3,6 +3,7 @@
     include "../model/pdo.php";
     include "../model/modeldm.php";
     include "../model/modelsp.php";
+    include "../model/modeltk.php";
     include "header.php";
     // controler
 
@@ -187,6 +188,81 @@
                 $listsanpham=loadall_sanpham("",0);
                 include "sanpham/list.php";
                 break;
+
+                // hiển thị list tài khoản (load danh sách tài khoản)       
+            case 'dskh':
+                // $listtk ở đây chính là biến để hứng cái funtion có giá trị trả về ở modeltk.php !
+                $listtk=loadall_taikhoan();
+                include "taikhoan/list.php";
+            break;
+
+            case 'deletetk':
+                //kiểm tra xem id có tồn tại và thỏa mãn điều kiện id>0
+                if (isset($_GET['id'])&&($_GET['id']>0)) {
+                    delete_taikhoan($_GET['id']);
+                };
+                // sau khi xóa dữ liệu xong thì ta gọi lại danh sách = câu lệnh dưới
+                // "id decs" là để hiện danh sách tài khoản cái nào mới nhập thì đưa lên trên!
+                $listtk=loadall_taikhoan();
+                include "taikhoan/list.php";
+                break;
+            break;
+
+            case 'addtk':
+                // kiểm tra người dùng có click vào nút add hay không 
+                    if(isset($_POST['submit']) && ($_POST['submit'])){
+                        // kiểm tra xem có đúng rằng nó tồn tại và người ta có click vào hay không
+                            $email=$_POST['email'];
+                            $user=$_POST['user'];
+                            $pass=$_POST['pass'];
+                            $address=$_POST['address'];
+                            $tel=$_POST['tel'];
+                            
+                            $role=$_POST['role'];
+                        // thì ta insert tên loại lên database
+                        insert_tk($user,$pass,$email,$address,$tel,$role);
+
+                    $thongbao="thêm đã thành công";
+
+                    }
+
+                    include "taikhoan/add.php";
+                break;
+
+                case 'edittk':
+                    //kiểm tra xem id có tồn tại và thỏa mãn điều kiện id>0
+                    if (isset($_GET['id'])&&($_GET['id']>0)) {
+                    // phải lấy đúng biến truyền vào !
+                    $taikhoan=loadone_taikhoan($_GET['id']);
+                    }
+                    // show phần from update:
+                    include "taikhoan/update.php";
+                break;
+
+                case 'uploadtk':
+                    // kiểm tra người dùng có click vào nút Cập Nhật hay không 
+                    if(isset($_POST['upload']) && ($_POST['upload'])){
+                        // kiểm tra xem có đúng rằng nó tồn tại và người ta có click vào hay không
+                        $email=$_POST['email'];
+                        $user=$_POST['user'];
+                        $pass=$_POST['pass'];
+                        $address=$_POST['address'];
+                        $tel=$_POST['tel'];
+                        
+                        $role=$_POST['role'];
+                        $id=$_POST['id'];
+                        // thì ta sửa tên loại lên database
+                        update_tk($id,$user,$pass,$email,$address,$tel,$role);
+    
+                    $thongbao="thêm đã thành công";
+                    }
+                    
+                    // "id decs" là để hiện danh sách cái nào mới nhập thì đưa lên trên!
+                    $listtaikhoan=loadall_taikhoan();
+                    include "taikhoan/update.php";
+                    break;
+
+                
                
             
             default:
@@ -201,7 +277,7 @@
 
 
 
-    include "home.php";
+    
 
     include "footer.php";
 
