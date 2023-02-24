@@ -161,7 +161,89 @@
     }
     .thongbao{
         color:red;
-    }       
+    }
+    
+    /* css phần form giỏ hàng */
+    .formgh table{
+        width: 95%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        
+        margin-top: 20px;
+        
+    }
+    .formgh table td{
+        padding: 10px 20px;
+        border: 1px solid #ccc ;
+        background-color: #fff; 
+    }
+
+
+    /* input trong bảng table */
+    .formgh table input[type="button"]{
+        width: 50px;
+        border-radius: 5px;
+        border-color:#CCC ;
+        
+        gap: 10px;
+    }
+
+    .formgh table input[type="button"]:hover{
+        background-color: aqua;
+        cursor: pointer;
+        
+    }
+
+    /* input dưới bảng table */
+    .formgh input[type="button"]{
+        border-radius: 5px;
+        margin-top: 5px;
+        border-color:#CCC ;
+        background-color: #fff;
+    }
+
+    .formgh  input[type="button"]:hover{
+        background-color: aqua;
+        cursor: pointer;
+        
+    }
+
+    .gh input[type="submit"]{
+        border-radius: 5px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        margin-left: 25px;
+        border-color:#CCC ;
+        background-color: #fff;
+    }
+
+    input[type="submit"]:hover{
+        background-color: aqua;
+        cursor: pointer;
+    }
+    /* css phần table trong trang bill */
+    .tablett table{
+        margin-left:20px;
+        margin-top:20px;
+        margin-bottom:20px;
+    }
+    .tablett table input[type="text"]{
+        width: 260%;
+        margin-left:20px;
+        border-radius: 5px;
+        
+        border-color:#CCC ;
+        background-color: #fff;
+    }
+    .tb{
+        margin-left:10px;
+        margin-top:10px;
+        margin-bottom:10px;
+    }
+    .tb input[type="radio"]{
+        margin-left:20px;
+    }
 </style>
     
     <div class="boxcenter">

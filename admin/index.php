@@ -4,6 +4,7 @@
     include "../model/modeldm.php";
     include "../model/modelsp.php";
     include "../model/modeltk.php";
+    include "../model/modelbl.php";
     include "header.php";
     // controler
 
@@ -262,7 +263,29 @@
                     include "taikhoan/update.php";
                     break;
 
-                
+                    case 'dsbl':
+                        // kiểm tra xem người dùng có bấm vào nút tìm kiếm trong trang danh sách sản phẩm không !
+                        if (isset($_POST['timkiemok'])&&($_POST['timkiemok'])) {
+                            // khởi tạo biến
+                            $kw=$_POST['keyword'];
+                            $idpro=$_POST['idpro'];
+                        }
+                        // nếu ngược lại ta xét giá trị cho $kw là rỗng và $iddm là bằng 0
+                        else {
+                            $kw='';
+                            $idpro=0;
+                        }
+                        // chú ý phải tồn tại biến mới thực hiện câu lệnh
+                        // hiển thị list danh mục 
+                        $listsanpham=loadall_sanpham();
+                        // hiển thị list danh sách
+                        $listbinhluan=loadall_binhluan($kw,$idpro);
+                     
+                        // $listbinhluan ở đây chính là biến để hứng cái funtion có giá trị trả về ở modeltk.php !
+
+                        $listbinhluan=loadall_binhluan($idpro);
+                        include "binhluan/list.php";
+                    break;
                
             
             default:

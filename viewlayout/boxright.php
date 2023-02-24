@@ -43,6 +43,10 @@
                                 }
                                 ?>
                                 <li>
+                                    <a href="index.php?act=addtocard">Xem Giỏ Hàng</a>
+                                </li>
+
+                                <li>
                                     <a href="index.php?act=out">Thoát</a>
                                 </li>
 

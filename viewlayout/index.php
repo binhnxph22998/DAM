@@ -5,12 +5,18 @@
     include "../model/modeldm.php";
     include "../model/modelsp.php";
     include "../model/modeltk.php";
+    include "../model/modelcard.php";
     // tạo biến hứng hàm load sản phẩm trong file modelsp.php
     $spnew=loadall_sanpham_home();
     // tạo biến hứng hàm load danh mục trong file modeldm.php
     $dsdm=loadall_danhmuc();
     // tạo biến hứng hàm load sản phẩm top 10 trong file modelsp.php
     $loadtop10=loadall_sanpham_top10();
+
+    // kiểm tra nếu mảng $_SESSION['mycard'] không tồn tại thì tạo $_SESSION['mycard'] thành 1 mảng mới
+    if (!isset($_SESSION['mycard'])) {
+        $_SESSION['mycard']=[];
+    }
 
     include "../gobal.php";
     include "header.php";
@@ -141,10 +147,74 @@
                     case 'out':
                         session_unset();
                         include "home.php";
-                    break;        
-            case 'gioithieu':
+                    break; 
+
+                    case 'addtocard':
+                        // kiểm tra xem người dùng có bấm vào nút thêm giỏ hàng hay không
+                        if(isset($_POST['themgh'])&&($_POST['themgh'])){
+                            $id=$_POST['id'];
+                            $img=$_POST['img'];
+                            $namesp=$_POST['namesp'];
+                            $price=$_POST['price'];
+                            $soluong=1;
+                            $thanhtien=$soluong * $price;
+                            // tạo 1 mảng bao gồm các giá trị 
+                            $spadd=[$id,$img,$namesp,$price,$soluong,$thanhtien];
+                            array_push($_SESSION['mycard'],$spadd);
+                         };
+                        include "viewcard.php";
+                    break;
+
+                    case 'delcard':
+                        // kiểm tra xem idcard có tồn tại và >0  thì thực hiện câu lệnh xóa từng yêu cầu
+                        if (isset($_GET['idcard'])&&($_GET['idcard']>=0)) {
+                            
+                            array_splice($_SESSION['mycard'],$_GET['idcard'],1);
+                        }else {
+                            // ngược lại nếu mà idcard không tồn tại hoặc <0 thì thực hiện câu lệnh xóa bỏ tất cả các hàng trong giỏ hàng
+                            $_SESSION['mycard']=[];
+                        }
+
+                        include "viewcard.php";
+                    break;
+
+                    case 'viewcard':
+                        include "viewcard.php";
+                    break;
+
+                    case 'bill':
+                        include "bill.php";
+                    break;
+                
+                    case 'billcf':
+                    if(isset($_POST['yes'])&&($_POST['yes'])){
+                        $name=$_POST['name'];
+                        $email=$_POST['email'];
+                        $address=$_POST['address'];
+                        $tel=$_POST['tel'];
+                        $pttt=$_POST['pttt'];
+                        $ngaydathang=date("h:i:sa d/m/y");
+                        $tongdonhang=tongdonhang();
+
+                        $idbill=insert_bill($name,$email,$address,$tel,$pttt,$ngaydathang,$tongdonhang);
+                         
+                        foreach ($_SESSION['mycard'] as $card) {
+                            insert_card($_SESSION['user']['id'],$card[0],$card[2],$card[1],$card[3],$card[4],$card[5],$idbill);
+                        }
+
+                        $_SESSION['card']=[];
+                        
+                        $bill=loadone_bill($idbill);
+                        $billct=loadall_card($idbill);
+                        
+                    };
+                    
+                    include "billcf.php";
+                break; 
+
+                case 'gioithieu':
                     include "gioithieu.php";
-                break;    
+                break; 
             case 'lienhe':
                 include "lienhe.php";
                 break;

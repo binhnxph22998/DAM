@@ -25,19 +25,36 @@
                         echo '<p> Tên Sản Phẩm: '.$namesp.' </p>';
                         echo '<p> Giá Sản Phẩm: $'.$price.' </p>';
                         echo '<p> Mô Tả Sản Phẩm: '.$detail.'</p>';
+                        echo '
+                        <div class="row ">
+                        <form action="index.php?act=addtocard" method="post" class="gh">
+                            <input type="hidden" name="id" value="'.$id.'">
+                            <input type="hidden" name="namesp" value="'.$namesp.'">
+                            <input type="hidden" name="img" value="'.$img.'">
+                            <input type="hidden" name="price" value="'.$price.'">
+                            <input type="submit" name="themgh" value="Thêm vào giỏ hàng">
+                        </form>
+                        </div> 
+                        '
                     ?>
 
                 </div>
             </div>
 
-            <div class="row ">
-                <div class="boxtitle">
-                <h1>Bình Luận</h1>
-                </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+            <script>
+            $(document).ready(function(){
+            
+            // dùng giá trị reques để đọc $idpro truyền data
+            // load kia là dẫn link tới trang web
+            $("#binhluan").load("../viewlayout/binhluan.php", {idpro: <?=$id?>});
+            
+            });
+            </script>
 
-                <div class="row boxcontent mb10 h1">
-                    
-                </div>
+
+            <div class="row mb10" id="binhluan">
+                
             </div>
 
             <div class="row ">
