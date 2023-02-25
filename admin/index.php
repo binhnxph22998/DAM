@@ -5,6 +5,7 @@
     include "../model/modelsp.php";
     include "../model/modeltk.php";
     include "../model/modelbl.php";
+    include "../model/modelthongke.php";
     include "header.php";
     // controler
 
@@ -286,7 +287,16 @@
                         $listbinhluan=loadall_binhluan($idpro);
                         include "binhluan/list.php";
                     break;
-               
+
+                    case 'thongke':
+                        $listthongke=loadall_thongke();
+                        include "thongke/list.php";
+                        break;
+
+                    case 'bieudo':
+                            $listthongke=loadall_thongke();
+                            include "thongke/bieudo.php";
+                    break;    
             
             default:
 

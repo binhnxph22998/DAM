@@ -42,7 +42,7 @@
 
             </div>
                     
-            <a href="index.php?act=bill"><input type="button" value="Đồng ý Đặt Hàng"></a>
+            <a href="index.php?act=bill"><input type="button" name="dongy" value="Đồng ý Đặt Hàng"></a>
             <a href="index.php?act=delcard"><input type="button" value="Xóa Giỏ Hàng"></a>
 
             

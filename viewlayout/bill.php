@@ -6,10 +6,10 @@
 <div class="row mb content ">
 
             <!--Phần box-left chứa sản phẩm   -->
-            <div class="box-left ">
-
+        <div class="box-left ">
+            <form action="index.php?act=bill" method="post">
             <div class="row ">
-            
+                
                 <div class="boxtitle">
                 <h1>
                    Thông Tin Khách Hàng
@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="row boxcontentct mb10 h1 tablett">
-
+                    
                     <?php
                     // kiểm tra xem $_SESSION['user'] có tồn tại hay không (nghĩa là người dùng đã đăng nhập vào trang web) 
                     //sau đó thì gọi biến hứng giá trị
@@ -39,10 +39,12 @@
 
                     ?>
 
-                    <table>
+                    <table method="get">
                         <tr>
+                            <form action="index.php?act=billcf" method="get">
                             <td>Người Đặt Hàng</td>
                             <td><input type="text" name="name" id="" value="<?=$name?>"></td>
+                            </form>
                         </tr>
 
                         <tr>
@@ -76,11 +78,11 @@
                 </div>
 
                 <div class="row boxcontent">
-                    <table class="tb">
+                    <table class="tb" method="get">
                         <tr>
-                            <td><input type="radio" name="pttt" checked id="">Trả Tiền Khi Nhận Hàng</td>
-                            <td><input type="radio" name="pttt" id="">Thanh Toán Bằng thẻ Ngân Hàng</td>
-                            <td><input type="radio" name="pttt" id="">Thanh Toán Online</td>
+                            <td><input type="radio" value="1" name="pttt" checked id="">Trả Tiền Khi Nhận Hàng</td>
+                            <td><input type="radio" value="2" name="pttt" id="">Thanh Toán Bằng thẻ Ngân Hàng</td>
+                            <td><input type="radio" value="3" name="pttt" id="">Thanh Toán Online</td>
                         </tr>
                     </table>
                 </div>
@@ -114,10 +116,12 @@
             </div>
 
             <div class="formgh">
+
             <a href="index.php?act=billcf"><input type="button" name="yes" value="Đồng ý Đặt Hàng"></a>
+
             </div>
-                
-            </div>
+            </form>
+        </div>
 
 
             <!-- Phần box-right chứ các thông tin  -->

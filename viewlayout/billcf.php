@@ -7,48 +7,12 @@
 
             <!--Phần box-left chứa sản phẩm   -->
             <div class="box-left ">
-
-            <div class="row ">
-            
-                <div class="boxtitle">
-                <h1>
-                   Cảm Ơn
-                </h1>
-                </div>
-
-                <div class="row boxcontent">
-                    <h2>Cảm Ơn Quý Khách Đã Đặt Hàng</h2>
-                </div>
-            </div>
-            
-            <?php
-               
-                if (isset($bill)&&(is_array($bill))) {
-                    extract($bill);
-                }
-
-                
-
-             ?>
-
-        <div class="row ">
-            
-            <div class="boxtitle">
-            <h1>
-            Thông Tin Đơn Hàng
-            </h1>
-            </div>
-
-            <div class="row boxcontent">
-                <h2>DAM-<?=$bill['id'];?></h2>
-                <h2>Ngày Đặt Hàng-<?=$bill['ngaydathang']?></h2>
-                <h2>Tông Đơn Hàng-$<?=$bill['total']?></h2>
-                <h2>Phương Thức Thanh Toán-<?=$bill['bill_pttt']?></h2>
-            </div>
-        </div>
             
 
-            <div class="row ">
+       
+            
+
+            <div class="row mb10">
             
                 <div class="boxtitle">
                 <h1>
@@ -58,25 +22,47 @@
 
                 <div class="row boxcontentct mb10 h1 tablett">
 
-                    <table>
+                <?php
+                    // kiểm tra xem $_SESSION['user'] có tồn tại hay không (nghĩa là người dùng đã đăng nhập vào trang web) 
+                    //sau đó thì gọi biến hứng giá trị
+
+                        if (isset($_SESSION['user'])) {
+
+                            $name=$_SESSION['user']['user'];
+                            $address=$_SESSION['user']['address'];
+                            $email=$_SESSION['user']['email'];
+                            $tel=$_SESSION['user']['tel'];
+
+                        }else {
+                            // nếu không tồn tại thì sẽ để biến hứng giá trị rỗng (nghĩa là người dùng chưa đăng nhập vào)
+                            $name="";
+                            $address="";
+                            $email="";
+                            $tel="";
+                        }
+
+                    ?>
+                    <table method="get">
                         <tr>
+                            
                             <td>Người Đặt Hàng</td>
-                            <td><?=$listbill['bill_name']?></td>
+                            <td><input type="text" name="name" id="" value="<?=$name?>"></td>
+                            
                         </tr>
 
                         <tr>
                             <td>Địa Chỉ</td>
-                            <td><?=$listbill['bill_address']?></td>
+                            <td><input type="text" name="address" id="" value="<?=$address?>"></td>
                         </tr>
 
                         <tr>
                             <td>Email khác Hàng</td>
-                            <td><?=$listbill['bill_email']?></td>
+                            <td><input type="text" name="Email" id="" value="<?=$email?>"></td>
                         </tr>
 
                         <tr>
                             <td>Số Điện Thoại</td>
-                            <td><?=$listbill['bill_tel']?></td>
+                            <td><input type="text" name="tel" id="" value="<?=$tel?>"></td>
                         </tr>
                     </table>
                         
@@ -85,14 +71,14 @@
 
             
 
-            <div class="row ">
+            <div class="row mb10">
                 <div class="boxtitle">
                 <h1>Chi Tiết Giỏ Hàng</h1>
                 </div>
                         
                 <div class="row boxcontent mb10 formgh">
 
-                <table>
+                    <table>
                         <tr>
                             <td>Hình</td>
                             <td>Sản Phẩm</td>
@@ -111,8 +97,21 @@
                 </div>
             </div>
 
+            <div class="row mb10">
+            
+                <div class="boxtitle">
+                <h1>
+                   Cảm Ơn
+                </h1>
+                </div>
+
+                <div class="row boxcontent">
+                    <h2>Cảm Ơn Quý Khách Đã Đặt Hàng! Rất vui được phục vụ quý khác Hẹn Gặp Lại</h2>
+                </div>
+            </div>
+
             <div class="formgh">
-            <a href="index.php?act=bill"><input type="button" value="Đồng ý Đặt Hàng"></a>
+            <a href="index.php?act=mybill"><input type="button" value="Đơn hàng của Tôi"></a>
             </div>
                 
             </div>

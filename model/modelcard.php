@@ -42,6 +42,7 @@
             echo '
             <tr>
             <td><img src="../upload/'.$hinh.'" alt=""></td>
+            <td></td>
             <td>'.$card[2].'</td>
             <td>'.$card[3].'</td>
             <td>'.$card[4].'</td>
@@ -54,11 +55,18 @@
                 
             echo '
             <tr>
-                <td colspan=5>Tổng Đơn Hàng: $'.$tong.'</td>
+                <td colspan=6>Tổng Đơn Hàng: $'.$tong.'</td>
                
                
             </tr>
             ';
+}
+
+//
+function viewsoluong(){
+    foreach ($_SESSION['mycard'] as $card){
+        echo '<td>'.$card[4].'</td>';
+    }
 }
 
 function tongdonhang(){
@@ -77,6 +85,22 @@ function insert_bill($name,$email,$tel,$address,$pttt,$ngaydathang,$tongdonhang)
     
     //hàm thực thi câu lệnh sql
     return pdo_execute_return_lastInsertId($sql);
+}
+
+// hàm thêm bill
+function insert_billdt($ngaydathang,$tongdonhang){
+    $sql="insert into bill(ngaydathang,total) values('$ngaydathang','$tongdonhang')";
+    
+    //hàm thực thi câu lệnh sql
+    return pdo_execute_return_lastInsertId($sql);
+}
+
+// thêm tên,địa chỉ, số điện thoại của khách hàng
+function insert_bill1($name,$email,$tel,$address){
+    $sql="insert into bill(bill_name,bill_email,bill_tel,bill_address) values('$name','$email','$tel','$address')";
+    
+    //hàm thực thi câu lệnh sql
+    return pdo_execute($sql);
 }
 
 // hàm thêm card
@@ -104,4 +128,13 @@ function loadall_card($idbill){
             // có kết quả trả về thì phải return nó ra!
             return $bill;
 } 
+
+// hàm load bill 1 sản phẩm
+function loadall_bill($iduser){
+    $sql="select * from bill where iduser=".$iduser;
+            // hàm lấy chi tiết của 1 bill nào đó và đây là hàm có giá trị trả về nên phải có 1 biến để hứng nó!
+            $listbill=pdo_query_one($sql);
+            // có kết quả trả về thì phải return nó ra!
+            return $listbill;
+}   
 ?>

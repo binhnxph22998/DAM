@@ -187,30 +187,21 @@
                     break;
                 
                     case 'billcf':
-                    if(isset($_POST['yes'])&&($_POST['yes'])){
-                        $name=$_POST['name'];
-                        $email=$_POST['email'];
-                        $address=$_POST['address'];
-                        $tel=$_POST['tel'];
-                        $pttt=$_POST['pttt'];
-                        $ngaydathang=date("h:i:sa d/m/y");
-                        $tongdonhang=tongdonhang();
-
-                        $idbill=insert_bill($name,$email,$address,$tel,$pttt,$ngaydathang,$tongdonhang);
-                         
-                        foreach ($_SESSION['mycard'] as $card) {
-                            insert_card($_SESSION['user']['id'],$card[0],$card[2],$card[1],$card[3],$card[4],$card[5],$idbill);
-                        }
-
-                        $_SESSION['card']=[];
-                        
-                        $bill=loadone_bill($idbill);
-                        $billct=loadall_card($idbill);
-                        
-                    };
-                    
                     include "billcf.php";
                 break; 
+
+                case 'mybill':
+                    
+                    $ngaydathang=date("d/m/y");
+                    $tongdonhang=tongdonhang();
+                    $idbill=insert_billdt($ngaydathang,$tongdonhang);
+
+                
+                    $bill=loadone_bill($idbill);
+                    $billct=loadall_card($idbill);
+
+                    include "mybill.php";
+                break;
 
                 case 'gioithieu':
                     include "gioithieu.php";
